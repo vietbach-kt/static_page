@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'help' => 'static_pages#help'
   get 'about' => 'static_pages#about'
   get 'home' => 'static_pages#home'
-  get 'login' => 'static_pages#login'
+  get 'login' => 'sessions#new'
   get 'signup' => 'users#new'
   root 'static_pages#home'
   resources :users
