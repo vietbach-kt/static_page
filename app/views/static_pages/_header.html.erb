@@ -7,17 +7,29 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav justify-content-end">
           <li class="nav-item">
-              <%= link_to "Home",'home', class: "nav-link" %>
+              <%= link_to "Home",home_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-              <%= link_to "Help",'help', class: "nav-link" %>
+              <%= link_to "Help",help_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-              <%= link_to "About",'about', class: "nav-link" %>
+              <%= link_to "About",about_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-              <%= link_to "Login",'login', class: "nav-link" %>
-          </li>
+          <% if logged_in? %> 
+            <li class="nav-item dropdown">
+                <%= link_to "Account", "#", class: "nav-link dropbtn dropdown-toggle"%>
+                <div class="dropdown-content">
+                    <%= link_to "Profile", current_user%>
+                    <%= link_to "Settings", '#'%>
+                    <div class="dropdown-divider"></div>
+                    <%= link_to "Log out", logout_path, method: :delete %>
+                </div>
+            </li>
+          <% else %>
+            <li class="nav-item">
+                <%= link_to "Login",'login',target: "_blank", class: "nav-link" %>
+            </li>
+          <% end %>  
           </ul>
       </div>
     </div>  

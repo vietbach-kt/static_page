@@ -8,6 +8,9 @@
 						 <div class="col-md-12 text-center">
 							<h1>Login</h1>
 						 </div>
+                     <% flash.each do |message_type, message| %>
+                        <div class="alert alert-<%= message_type %>"><%= message %></div>
+                     <% end %>
 					</div>
                     <%= form_for :session, url: login_path do |f| %>
                            <div class="form-group">
@@ -17,6 +20,12 @@
                            <div class="form-group">
                             <%= f.label :password %>
                             <%= f.password_field :password, placeholder: "Enter your password" ,class: "form-control",id: "password"%>
+                           </div>
+                            <div class="form-check">
+                              <%= f.label :remember_me, class: "form-check-input" do %>
+                                    <%= f.check_box :remember_me %>
+                              <% end %>
+                              <label class="form-check-label" for="exampleCheck1">Remember me</label>
                            </div>
                            <div class="col-md-12 text-center ">
                               <%= f.submit "Login", class: "btn btn-block mybtn btn-primary tx-tfm" %>
@@ -37,9 +46,9 @@
                            <div class="form-group">
                               <p class="text-center">Don't have account? <%= link_to "Signup", new_user_path%>.</p>
                            </div>
-                       <% end %>
-                    </div>
-			    </div>
+                     <% end %>
+                  </div>
+			   </div>
 		    </div>
         </div>   
     </div>     
