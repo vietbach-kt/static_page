@@ -10,15 +10,5 @@ module UsersHelper
         BCrypt::Engine.cost
         BCrypt::Password.create(string, cost: cost)
     end
-    def admin_user
-        redirect_to(root_url) unless current_user.admin?
-    end
-    def logged_in?
-        !current_user.nil?
-    end
-      # Confirms the correct user.
-    def correct_user
-        @user = User.find(params[:id])
-        redirect_to(root_url) unless current_user?(@user)
-    end
+
 end
