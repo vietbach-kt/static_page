@@ -44,6 +44,17 @@ class UsersController < ApplicationController
       params.require(:user).permit :name,:email , :password, :password_confirmation
     end
     # Before filters
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+  end
+  def logged_in?
+      !current_user.nil?
+  end
+    # Confirms the correct user.
+  def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+  end
     # Confirms a logged-in user.
     def logged_in_user
       unless logged_in?
@@ -58,4 +69,3 @@ class UsersController < ApplicationController
         redirect_to users_path ,  notice: 'User deleted.'
     end
 end
-00
