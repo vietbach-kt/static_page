@@ -39,6 +39,11 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted success"
+    redirect_to users_url
+  end
   private
     def user_params
       params.require(:user).permit :name,:email , :password, :password_confirmation
@@ -62,10 +67,5 @@ class UsersController < ApplicationController
         flash[:danger] = "Please login."
         redirect_to login_url
       end
-    end
-    def destroy
-        User.find(params[:id]).destroy
-        flash[:success] = "User deleted"
-        redirect_to users_path ,  notice: 'User deleted.'
     end
 end
