@@ -1,4 +1,5 @@
 @import "bootstrap";
+$gray-lighter: #777;
 /* sidebar */
 aside {
     section.user_info {
@@ -67,3 +68,14 @@ aside {
   .dropdown:hover .dropbtn {
     background-color: #e1e6ef;
   }
+
+  /* Users index */
+.users {
+  list-style: none;
+  margin: 0;
+  li{
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+    }
+}
